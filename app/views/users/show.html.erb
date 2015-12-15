@@ -1,0 +1,36 @@
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 class="panel-title">Show Details</h1>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-2">
+
+    </div>
+     <div class="col-md-6">
+    <table class='table table-bordered table-striped table-responsive table-hover'>
+      <tr>
+        <td> <%= image_tag @user.image %> </td>
+        <td> <b> <%= @user.name %> </b></td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td><%= @user.gender %></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td>UID</td>
+        <td><%= @user.uid %></td>
+      </tr>
+      <tr>
+        <td>Provider</td>
+        <td><%= @user.provider %></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+</div>
+
