@@ -25,7 +25,7 @@ production:
   encoding: unicode
   database: social_demo
   pool: 5
-  username: postgresuser
+  username: postgres
   password: root
   host: localhost
   port: 5432
