@@ -15,15 +15,15 @@ class RegistrationsController < Devise::RegistrationsController
       params.require(:user).permit(:name, :email, :image, :password,
         :password_confirmation)
     end
+
     def update_without_password(params, *options)
+      if params[:password].blank?
+        params.delete(:password)
+        params.delete(:password_confirmation) if params[:password_confirmation].blank?
+      end
 
-    if params[:password].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+      result = update_attributes(params, *options)
+      clean_up_passwords
+      result
     end
-
-    result = update_attributes(params, *options)
-    clean_up_passwords
-    result
-  end
 end
