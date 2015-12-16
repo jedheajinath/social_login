@@ -19,7 +19,11 @@
         <td><%= user.gender %> </td>
         <td><%= user.uid %></td>
         <td><%= user.provider %></td>
-        <td><%= image_tag user.image, width: 50, height: 50 %></td>
+        <td>
+        <% if user.image.present? %>
+          <%= image_tag user.image, width: 50, height: 50 %>
+        <% end %>
+        </td>
         <td><%= link_to "Show details", user_path(user) %></td>
       </tr>
     <% end %>

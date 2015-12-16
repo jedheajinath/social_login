@@ -5,6 +5,7 @@
       <li><a data-toggle="pill" href="#twitter">Twitter</a></li>
       <li><a data-toggle="pill" href="#google">Google</a></li>
       <li><a data-toggle="pill" href="#instagram">Instagram</a></li>
+      <li><a data-toggle="pill" href="#other">Other</a></li>
     </ul>
   </div>
   <div class="panel-body">
@@ -21,9 +22,9 @@
       <div id="instagram" class="tab-pane fade">
         <%= render partial: 'users', :locals =>  { provider: "instagram"} %>
       </div>
+       <div id="other" class="tab-pane fade">
+        <%= render partial: 'users', :locals =>  { provider: "other"} %>
+      </div>
     </div>
   </div>
 </div>
-
-
-
