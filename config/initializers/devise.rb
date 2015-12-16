@@ -263,8 +263,10 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :facebook, "1471774713045062", "15b22092a443c38482114a818b3569d5"
-  config.omniauth :twitter, "CVVqOjwI4EzRiLgqe8jPncJXV", "TgDGKmlRxjdXir6wqnm3YcYrGsuLjl8HStTrA0shBSGJz2BjWR"
+  config.omniauth :twitter, "ijExo1SPknddqTuVZj1ZGxJ8c", "zzOGmD7Jj5hAuY5SV494ajBjQONCIDr3RYaP5vjEqrnH0qeF3S"
+  # config.omniauth :twitter, "CVVqOjwI4EzRiLgqe8jPncJXV", "TgDGKmlRxjdXir6wqnm3YcYrGsuLjl8HStTrA0shBSGJz2BjWR"
   config.omniauth :google_oauth2, "316673272975-g82ln2bit00nr9duk5505kb6vvet59dp.apps.googleusercontent.com", "Rc6eUCwZuRx7DB7NyQWNxwX6"
+  config.omniauth :instagram, "11131069baf5474daa0ff09844060a10", "7e72dbaaefc3497fba39f0517996e921"
   config.secret_key = '174143cb1336317288888748dccbc8e885b28158fcee93b371028f58e5bd82ce34a2c81bf9d8eec208b8284bfd34fbc9cf427e54470c7aa9f2f2e57c0814dda9'
 
 end

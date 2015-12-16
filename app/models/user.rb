@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook]
+         :omniauthable, omniauth_providers: [:facebook, :twitter, :instagram, :google_oauth2]
 
 
 
@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
                           uid: auth.uid,
                           email: auth.uid+"@twitter.com",
                           password: Devise.friendly_token[0,20],
+                          image: auth.info.image
                           )
       end
     end
@@ -39,11 +40,25 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_for_google_oauth(auth_hash)
-    user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
-    user.email = auth_hash['info']['email']
-    user.password = Devise.friendly_token[0,20]
-    user.save!
-    user
+
+  def self.find_for_google_oauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+      user.gender = auth.extra.raw_info.gender
+      user.image = auth.info.image
+      user.details = auth
+    end
+  end
+
+  def self.find_for_instagram_oauth(auth)
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email ||  auth.uid + "@instagram.com"
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+      user.image = auth.info.image
+      user.details = auth
+    end
   end
 end

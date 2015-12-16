@@ -28,6 +28,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'carrierwave'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
+gem 'omniauth-instagram'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,28 +1,29 @@
-<h1 class ="text-primary text-center well">Listing Users</h1>
-<table class="table table-bordered table-striped table-hover table-responsive">
-  <thead>
-    <tr>
-      <th> Name </th>
-      <th> Email </th>
-      <th> Gender </th>
-      <th> UID </th>
-      <th> Provider </th>
-      <th> Image </th>
-      <th> Action </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <th><%= user.name %> </th>
-        <td><%= user.email %></td>
-        <td><%= user.gender %> </td>
-        <td><%= user.uid %></td>
-        <td><%= user.provider %></td>
-        <td><%= image_tag user.image %></td>
-        <td><%= link_to "Show details", user_path(user) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="panel with-nav-tabs panel-info">
+  <div class="panel-heading">
+    <ul class="nav nav-pills">
+      <li class="active" ><a data-toggle="pill" href="#facebook">Facebook</a></li>
+      <li><a data-toggle="pill" href="#twitter">Twitter</a></li>
+      <li><a data-toggle="pill" href="#google">Google</a></li>
+      <li><a data-toggle="pill" href="#instagram">Instagram</a></li>
+    </ul>
+  </div>
+  <div class="panel-body">
+    <div class="tab-content">
+      <div id="facebook" class="tab-pane fade in active">
+        <%= render partial: 'users', :locals =>  { provider: "facebook"} %>
+      </div>
+      <div id="twitter" class="tab-pane fade">
+        <%= render partial: 'users', :locals =>  { provider: "twitter"} %>
+      </div>
+      <div id="google" class="tab-pane fade">
+        <%= render partial: 'users', :locals => { provider: "google"} %>
+      </div>
+      <div id="instagram" class="tab-pane fade">
+        <%= render partial: 'users', :locals =>  { provider: "instagram"} %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 

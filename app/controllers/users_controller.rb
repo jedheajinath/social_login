@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @facebook_users = User.where(provider: 'facebook')
+    @twitter_users = User.where(provider: 'twitter')
+    @google_users = User.where(provider: 'google_oauth2')
+    @instagram_users = User.where(provider: 'instagram')
   end
 
   def show

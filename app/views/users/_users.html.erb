@@ -1,0 +1,28 @@
+<table class="table table-bordered table-striped table-hover table-responsive">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Email </th>
+      <th> Gender </th>
+      <th> UID </th>
+      <th> Provider </th>
+      <th> Image </th>
+      <th> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users = instance_variable_get("@" + provider + "_users") %>
+    <% users.each do |user| %>
+      <tr>
+        <th><%= user.name %> </th>
+        <td><%= user.email %></td>
+        <td><%= user.gender %> </td>
+        <td><%= user.uid %></td>
+        <td><%= user.provider %></td>
+        <td><%= image_tag user.image, width: 50, height: 50 %></td>
+        <td><%= link_to "Show details", user_path(user) %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
