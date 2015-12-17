@@ -10,6 +10,9 @@ class UsersController < ApplicationController
       format.js
       format.html
       format.csv { send_data User.as_csv(params[:provider]) }
+      format.pdf {
+          prawnto :prawn => { :template => "#{Rails.root}/app/views/user/index.pdf.prawn" }
+        }
     end
   end
 
