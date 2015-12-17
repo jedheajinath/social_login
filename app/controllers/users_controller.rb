@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     @google_users = User.where(provider: 'google_oauth2')
     @instagram_users = User.where(provider: 'instagram')
     @other_users = User.where(provider: nil)
+
+    respond_to do |format|
+      format.js
+      format.html
+      format.csv { send_data User.as_csv(params[:provider]) }
+    end
   end
 
   def show

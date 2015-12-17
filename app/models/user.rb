@@ -1,3 +1,4 @@
+require 'csv'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -59,6 +60,24 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.image = auth.info.image
       user.details = auth
+    end
+  end
+
+  def self.as_csv(provider)
+    provider = nil if provider == "other"
+    CSV.generate do |csv|
+      csv << ["Name", "Email", "UID" "Provider", "Gender", "Image"]
+      where(provider: provider).each do |user|
+        row = [
+                user.name,
+                user.email,
+                user.uid,
+                user.provider,
+                user.gender,
+                user.image.url
+              ]
+        csv << row
+      end
     end
   end
 end
