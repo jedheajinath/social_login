@@ -3,7 +3,8 @@ pdf.move_down(30)
 users = instance_variable_get("@" + params[:provider] + "_users")
 data = users.all.map {|user|
   if user.image.present?
-   [user.name, user.email, user.provider, {:image => user.image.path }]
+  img = user.image.path
+   [user.name, user.email, user.provider, {:image => img, :image_width => 50, :image_height => 50 }]
   else
    [user.name, user.email, user.provider || "Other", "No image available"]
   end
